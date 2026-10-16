@@ -1,4 +1,4 @@
-package com.Cesde.manuelaBermudezRealtor.service;
+package com.Cesde.manuelaBermudezRealtor.repositories;
 
 import com.Cesde.manuelaBermudezRealtor.modelo.MBuyer;
 import org.springframework.data.jpa.repository.JpaRepository;

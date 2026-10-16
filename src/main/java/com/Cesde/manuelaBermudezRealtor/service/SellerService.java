@@ -1,43 +1,52 @@
+
 package com.Cesde.manuelaBermudezRealtor.service;
 
-import com.Cesde.manuelaBermudezRealtor.modelo.MBuyer;
-import com.Cesde.manuelaBermudezRealtor.repositories.BuyerRepository;
+import com.Cesde.manuelaBermudezRealtor.modelo.MSeller;
+import com.Cesde.manuelaBermudezRealtor.repositories.SellerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ClienteService {
-    private final BuyerRepository buyerRepository;
+public class SellerService {
 
-    public ClienteService(BuyerRepository buyerRepository) {
-        this.buyerRepository = buyerRepository;
+    private final SellerRepository sellerRepository;
+
+    public SellerService(SellerRepository sellerRepository) {
+        this.sellerRepository = sellerRepository;
     }
 
-    public MBuyer crearCliente(MBuyer cliente) {
-        return buyerRepository.save(cliente);
+    public MSeller crearVendedor(MSeller vendedor) {
+        return sellerRepository.save(vendedor);
     }
 
-    public List<MBuyer> listarClientes() {
-        return buyerRepository.findAll();
+    public List<MSeller> listarVendedores() {
+        return sellerRepository.findAll();
     }
 
-    public MBuyer buscarClientePorId(Integer id) {
-        return buyerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("El cliente con la id: " + id + " no existe"));
+    public MSeller buscarVendedorPorId(Integer id) {
+        return sellerRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException(
+                                "El vendedor con id " + id + " no existe"
+                        ));
     }
 
-    public MBuyer actualizarCliente(Integer id, MBuyer actualizado) {
-        MBuyer cliente = buscarClientePorId(id);
-        cliente.setNomComprador(actualizado.getNomComprador());
-        cliente.setPassword(actualizado.getPassword());
-        cliente.setTelComprador(actualizado.getTelComprador());
-        cliente.setCorreoComprador(actualizado.getCorreoComprador());
-        cliente.setStatus(actualizado.isStatus());
-        return buyerRepository.save(cliente);
+    public MSeller actualizarVendedor(Integer id, MSeller actualizado) {
+        MSeller vendedor = buscarVendedorPorId(id);
+
+        vendedor.setNomVendedor(actualizado.getNomVendedor());
+        vendedor.setPassword(actualizado.getPassword());
+        vendedor.setTelVendedor(actualizado.getTelVendedor());
+        vendedor.setCorreoVendedor(actualizado.getCorreoVendedor());
+        vendedor.setStatus(actualizado.isStatus());
+        vendedor.setPropiedadesVendidas(actualizado.getPropiedadesVendidas());
+        vendedor.setBalance(actualizado.getBalance());
+
+        return sellerRepository.save(vendedor);
     }
 
-    public void eliminarCliente(Integer id) {
-        buyerRepository.delete(buscarClientePorId(id));
+    public void eliminarVendedor(Integer id) {
+        sellerRepository.delete(buscarVendedorPorId(id));
     }
 }

@@ -11,21 +11,26 @@ public class MBuyer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idComprador;
+
     @Column(length = 70, nullable = false)
     private String nomComprador;
-    @Column(length = 15, nullable = false)
+
+    @Column(length = 60, nullable = false)
     private String password;
+
     @Column(length = 60, nullable = false)
     private String telComprador;
+
     @Column(length = 50, nullable = false)
     private String correoComprador;
+
     @Column(nullable = false)
     private boolean status;
 
     //Relaciones entre comprador y propiedad
     @OneToMany(mappedBy = "comprador")
     @JsonManagedReference
-    private List<MpropiedadComprador> propiedades;
+    private List<MpropertyBuyer> propiedades;
 
     //Encapsulamiento
 
@@ -62,11 +67,11 @@ public class MBuyer {
         this.password = password;
     }
 
-    public List<MpropiedadComprador> getPropiedades() {
+    public List<MpropertyBuyer> getPropiedades() {
         return propiedades;
     }
 
-    public void setPropiedades(List<MpropiedadComprador> propiedades) {
+    public void setPropiedades(List<MpropertyBuyer> propiedades) {
         this.propiedades = propiedades;
     }
 

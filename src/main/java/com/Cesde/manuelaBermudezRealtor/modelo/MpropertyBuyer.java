@@ -18,8 +18,9 @@ public class MpropertyBuyer {
     @JoinColumn(name = "propiedad_id", nullable = false)
     private MProperty propiedad;
 
-    @ManyToOne
-    @JoinColumn(name = "comprador_id", nullable = false)
+    @JoinColumn(name="propiedad_id", nullable = false)
+    private MProperty propiedad;
+
     @JsonBackReference
     private MBuyer comprador;
 

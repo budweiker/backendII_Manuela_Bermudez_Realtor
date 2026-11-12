@@ -35,10 +35,11 @@ public class SellerService {
     public MSeller actualizarVendedor(Integer id, MSeller actualizado) {
         MSeller vendedor = buscarVendedorPorId(id);
 
-        vendedor.setNomVendedor(actualizado.getNomVendedor());
+        vendedor.setNombre(actualizado.getNombre());
+        vendedor.setApellido(actualizado.getApellido());
         vendedor.setPassword(actualizado.getPassword());
-        vendedor.setTelVendedor(actualizado.getTelVendedor());
-        vendedor.setCorreoVendedor(actualizado.getCorreoVendedor());
+        vendedor.setTelefono(actualizado.getTelefono());
+        vendedor.setCorreo(actualizado.getCorreo());
         vendedor.setStatus(actualizado.isStatus());
         vendedor.setPropiedadesVendidas(actualizado.getPropiedadesVendidas());
         vendedor.setBalance(actualizado.getBalance());

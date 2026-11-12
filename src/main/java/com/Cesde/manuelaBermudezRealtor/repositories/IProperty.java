@@ -8,13 +8,9 @@ import java.util.List;
 
 @Repository
 public interface IProperty extends JpaRepository<MProperty, Integer> {
-    // Consulta por barrio
-    List<MProperty> findByBarrio(String barrio);
-    //Consulta por estrato
+    List<MProperty> findByBarrioIgnoreCase(String barrio);
     List<MProperty> findByEstrato(int estrato);
-    // Consulta por municipio
-    List<MProperty> findByMunicipio(String municipio);
-    //Consulta por valor
-    List<MProperty> findByValor(float min, float max);
+    List<MProperty> findByMunicipioIgnoreCase(String municipio);
+    List<MProperty> findByPropiedadValorBetween(float min, float max);
 
 }

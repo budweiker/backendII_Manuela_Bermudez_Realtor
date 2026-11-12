@@ -1,93 +1,26 @@
 package com.Cesde.manuelaBermudezRealtor.modelo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
 
-import java.util.List;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+import java.math.BigDecimal;
 
 @Entity
-@Table(name="buyer")
-public class MBuyer {
-    //atributos
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idComprador;
+@Table(name = "buyer")
+@PrimaryKeyJoinColumn(name = "user_id")
+public class MBuyer extends MUser {
+    @Column(length = 255)
+    private String propiedadDeInteresActual;
 
-    @Column(length = 70, nullable = false)
-    private String nomComprador;
+    @Column(precision = 14, scale = 2, nullable = false)
+    private BigDecimal balance = BigDecimal.ZERO;
 
-    @Column(length = 60, nullable = false)
-    private String password;
-
-    @Column(length = 60, nullable = false)
-    private String telComprador;
-
-    @Column(length = 50, nullable = false)
-    private String correoComprador;
-
-    @Column(nullable = false)
-    private boolean status;
-
-    //Relaciones entre comprador y propiedad
-    @OneToMany(mappedBy = "comprador")
-    @JsonManagedReference
-    private List<MpropertyBuyer> propiedades;
-
-    //Encapsulamiento
-
-
-    public String getCorreoComprador() {
-        return correoComprador;
+    public String getPropiedadDeInteresActual() { return propiedadDeInteresActual; }
+    public void setPropiedadDeInteresActual(String propiedadDeInteresActual) {
+        this.propiedadDeInteresActual = propiedadDeInteresActual;
     }
-
-    public void setCorreoComprador(String correoComprador) {
-        this.correoComprador = correoComprador;
-    }
-
-    public Integer getIdComprador() {
-        return idComprador;
-    }
-
-    public void setIdComprador(Integer idComprador) {
-        this.idComprador = idComprador;
-    }
-
-    public String getNomComprador() {
-        return nomComprador;
-    }
-
-    public void setNomComprador(String nomComprador) {
-        this.nomComprador = nomComprador;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<MpropertyBuyer> getPropiedades() {
-        return propiedades;
-    }
-
-    public void setPropiedades(List<MpropertyBuyer> propiedades) {
-        this.propiedades = propiedades;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getTelComprador() {
-        return telComprador;
-    }
-
-    public void setTelComprador(String telComprador) {
-        this.telComprador = telComprador;
-    }
+    public BigDecimal getBalance() { return balance; }
+    public void setBalance(BigDecimal balance) { this.balance = balance; }
 }

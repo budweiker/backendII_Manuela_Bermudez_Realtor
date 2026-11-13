@@ -76,7 +76,7 @@ El proyecto usa una **arquitectura por capas**, donde cada capa tiene una única
 | 🔄 **Mapper**     | Convierte entre `Entity` y `DTO`.                                    |
 
 ```text
-Cliente (Front / Postman)
+Comprador (Front / Postman)
         │  HTTP
         ▼
    Controller  ──►  Service  ──►  Repository  ──►  MySQL
@@ -128,13 +128,13 @@ src/main/java/<tu.paquete>/
 
 Antes de empezar, asegúrate de tener instalado:
 
-| Requisito      | Versión mínima                                          | Para qué sirve                     |
-| -------------- | ------------------------------------------------------- | ---------------------------------- |
-| ☕ **JDK**     | 17 o superior (verifica `java.version` en tu `pom.xml`) | Compilar y ejecutar la aplicación  |
-| 📦 **Maven**   | 3.8+ (o el wrapper `mvnw` incluido)                     | Gestionar dependencias y construir |
-| 🗄️ **MySQL**   | 8+ / MariaDB (incluido en **XAMPP**)                    | Base de datos                      |
-| 🧰 **IDE**     | IntelliJ IDEA (recomendado)                             | Desarrollo                         |
-| 📮 **Postman** | Cualquiera                                              | Probar los endpoints               |
+| Requisito      | Versión mínima | Para qué sirve |
+| -------------- | -------------- | -------------- |
+| ☕ **JDK**     | 21             |
+| 📦 **Maven**   | 3.9.11         |
+| 🗄️ **MySQL**   | **XAMPP**      | Base de datos  |
+| 🧰 **IDE**     | IntelliJ IDEA  |
+| 📮 **Postman** |
 
 ### 🔐 Variables de entorno (opcional)
 
@@ -154,15 +154,15 @@ Si no quieres dejar credenciales en el código, puedes definirlas como variables
 ### 1️⃣ Clonar el repositorio
 
 ```bash
-git clone https://github.com/<usuario>/<repositorio>.git
-cd <repositorio>
+git clone https://github.com/budweiker/backendII_Manuela_Bermudez_Realtor.git
+cd <manuelaBermudezRealtor>
 ```
 
 ### 2️⃣ Configurar la base de datos
 
 1. Abre **XAMPP** e inicia los módulos **Apache** y **MySQL**.
 2. Entra a [`http://localhost/phpmyadmin`](http://localhost/phpmyadmin).
-3. Crea una base de datos nueva con cotejamiento `utf8mb4_general_ci`.
+3. Crea una base de datos nueva con cotejamiento `Manuela Bermudez Reaktor`.
 
 <!-- 📸 CAPTURA: XAMPP con Apache y MySQL en verde (Running).
      Guárdala como docs/img/xampp-activo.png
@@ -379,6 +379,6 @@ Proyecto académico desarrollado en **CESDE**. © 2026 — Todos los derechos re
 
 <div align="center">
 
-Hecho con ☕ y mucho código · CESDE · 2026
+Desarrolladores de Software · CESDE · 2026
 
 </div>

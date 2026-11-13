@@ -66,14 +66,14 @@ Fue desarrollado como **proyecto integrador del tercer semestre** de la técnica
 
 El proyecto usa una **arquitectura por capas**, donde cada capa tiene una única responsabilidad:
 
-| Capa | Responsabilidad |
-| --- | --- |
-| 🏷️ **Entity** | Representa las entidades con sus atributos y relaciones. |
-| 💾 **Repository** | Gestiona el acceso a los datos. |
-| 🧠 **Service** | Contiene las reglas de negocio. |
-| 🌐 **Controller** | Recibe las solicitudes HTTP y devuelve las respuestas. |
-| 📦 **DTO** | Objetos que definen qué datos viajan entre el cliente y el servidor. |
-| 🔄 **Mapper** | Convierte entre `Entity` y `DTO`. |
+| Capa              | Responsabilidad                                                      |
+| ----------------- | -------------------------------------------------------------------- |
+| 🏷️ **Entity**     | Representa las entidades con sus atributos y relaciones.             |
+| 💾 **Repository** | Gestiona el acceso a los datos.                                      |
+| 🧠 **Service**    | Contiene las reglas de negocio.                                      |
+| 🌐 **Controller** | Recibe las solicitudes HTTP y devuelve las respuestas.               |
+| 📦 **DTO**        | Objetos que definen qué datos viajan entre el cliente y el servidor. |
+| 🔄 **Mapper**     | Convierte entre `Entity` y `DTO`.                                    |
 
 ```text
 Cliente (Front / Postman)
@@ -86,13 +86,13 @@ Cliente (Front / Postman)
 
 ### 🛠️ Tecnologías
 
-| Componente | Tecnología |
-| --- | --- |
-| Lenguaje | Java |
-| Framework | Spring Boot |
-| Base de datos | MySQL (XAMPP) |
-| Herramienta de construcción | Maven |
-| Documentación de la API | Swagger (OpenAPI) |
+| Componente                  | Tecnología        |
+| --------------------------- | ----------------- |
+| Lenguaje                    | Java              |
+| Framework                   | Spring Boot       |
+| Base de datos               | MySQL (XAMPP)     |
+| Herramienta de construcción | Maven             |
+| Documentación de la API     | Swagger (OpenAPI) |
 
 ### 📦 DTO y Mapper
 
@@ -118,12 +118,9 @@ src/main/java/<tu.paquete>/
 └── mapper/        # Conversión Entity ↔ DTO
 ```
 
-<!-- 📸 CAPTURA: modelo entidad-relación de la base de datos.
-     Cómo sacarla: phpMyAdmin → base de datos → pestaña "Más" → "Diseñador". Toma el pantallazo ahí.
-     Guárdala como docs/img/modelo-er.png
+📸 CAPTURA: modelo entidad-relación de la base de datos.
 
 ![Modelo entidad-relación](docs/img/modelo-er.png)
--->
 
 ---
 
@@ -131,24 +128,24 @@ src/main/java/<tu.paquete>/
 
 Antes de empezar, asegúrate de tener instalado:
 
-| Requisito | Versión mínima | Para qué sirve |
-| --- | --- | --- |
-| ☕ **JDK** | 17 o superior (verifica `java.version` en tu `pom.xml`) | Compilar y ejecutar la aplicación |
-| 📦 **Maven** | 3.8+ (o el wrapper `mvnw` incluido) | Gestionar dependencias y construir |
-| 🗄️ **MySQL** | 8+ / MariaDB (incluido en **XAMPP**) | Base de datos |
-| 🧰 **IDE** | IntelliJ IDEA (recomendado) | Desarrollo |
-| 📮 **Postman** | Cualquiera | Probar los endpoints |
+| Requisito      | Versión mínima                                          | Para qué sirve                     |
+| -------------- | ------------------------------------------------------- | ---------------------------------- |
+| ☕ **JDK**     | 17 o superior (verifica `java.version` en tu `pom.xml`) | Compilar y ejecutar la aplicación  |
+| 📦 **Maven**   | 3.8+ (o el wrapper `mvnw` incluido)                     | Gestionar dependencias y construir |
+| 🗄️ **MySQL**   | 8+ / MariaDB (incluido en **XAMPP**)                    | Base de datos                      |
+| 🧰 **IDE**     | IntelliJ IDEA (recomendado)                             | Desarrollo                         |
+| 📮 **Postman** | Cualquiera                                              | Probar los endpoints               |
 
 ### 🔐 Variables de entorno (opcional)
 
 Si no quieres dejar credenciales en el código, puedes definirlas como variables de entorno:
 
-| Variable | Descripción | Valor por defecto |
-| --- | --- | --- |
-| `DB_URL` | URL de conexión JDBC | `jdbc:mysql://localhost:3306/<nombre_bd>` |
-| `DB_USER` | Usuario de la base de datos | `root` |
-| `DB_PASSWORD` | Contraseña de la base de datos | *(vacía en XAMPP)* |
-| `JAVA_HOME` | Ruta del JDK instalado | — |
+| Variable      | Descripción                    | Valor por defecto                         |
+| ------------- | ------------------------------ | ----------------------------------------- |
+| `DB_URL`      | URL de conexión JDBC           | `jdbc:mysql://localhost:3306/<nombre_bd>` |
+| `DB_USER`     | Usuario de la base de datos    | `root`                                    |
+| `DB_PASSWORD` | Contraseña de la base de datos | _(vacía en XAMPP)_                        |
+| `JAVA_HOME`   | Ruta del JDK instalado         | —                                         |
 
 ---
 
@@ -234,14 +231,14 @@ Started <NombreApplication> in X seconds
 
 ## 🔧 Configuración interna
 
-| Elemento | Valor |
-| --- | --- |
-| 🌍 URL base de la API | `http://localhost:8080` |
-| 🔌 Puerto de la aplicación | `8080` |
-| 🗄️ Servidor MySQL | `localhost:3306` |
-| 🖥️ phpMyAdmin | `http://localhost/phpmyadmin` |
-| 👤 Usuario de la base de datos | `root` |
-| 🔑 Contraseña de la base de datos | *(vacía, valor por defecto de XAMPP)* |
+| Elemento                          | Valor                                 |
+| --------------------------------- | ------------------------------------- |
+| 🌍 URL base de la API             | `http://localhost:8080`               |
+| 🔌 Puerto de la aplicación        | `8080`                                |
+| 🗄️ Servidor MySQL                 | `localhost:3306`                      |
+| 🖥️ phpMyAdmin                     | `http://localhost/phpmyadmin`         |
+| 👤 Usuario de la base de datos    | `root`                                |
+| 🔑 Contraseña de la base de datos | _(vacía, valor por defecto de XAMPP)_ |
 
 > ⚠️ Estas credenciales son **solo para desarrollo local**. Nunca subas contraseñas reales al repositorio.
 
@@ -253,10 +250,10 @@ URL base: `http://localhost:8080`
 
 ### 👤 Clientes
 
-| Método | Ruta | Anotación | Descripción |
-| :---: | --- | --- | --- |
-| `POST` | `/clientes` | `@PostMapping` | ➕ Adiciona un registro de cliente |
-| `GET` | `/clientes/{idcliente}` | `@GetMapping("/{idcliente}")` | 🔍 Consulta un cliente por llave primaria |
+| Método | Ruta                    | Anotación                     | Descripción                               |
+| :----: | ----------------------- | ----------------------------- | ----------------------------------------- |
+| `POST` | `/clientes`             | `@PostMapping`                | ➕ Adiciona un registro de cliente        |
+| `GET`  | `/clientes/{idcliente}` | `@GetMapping("/{idcliente}")` | 🔍 Consulta un cliente por llave primaria |
 
 <!-- TODO: agrega aquí el resto de endpoints con el mismo formato, por ejemplo:
 | `GET` | `/clientes` | `@GetMapping` | 📋 Lista todos los clientes |
@@ -348,10 +345,10 @@ La API se documenta con **Swagger (OpenAPI)** mediante la librería `springdoc-o
 
 **2. Inicia la aplicación y abre:**
 
-| Recurso | URL |
-| --- | --- |
-| 🖥️ Interfaz Swagger UI | `http://localhost:8080/swagger-ui/index.html` |
-| 📄 Especificación OpenAPI (JSON) | `http://localhost:8080/v3/api-docs` |
+| Recurso                          | URL                                           |
+| -------------------------------- | --------------------------------------------- |
+| 🖥️ Interfaz Swagger UI           | `http://localhost:8080/swagger-ui/index.html` |
+| 📄 Especificación OpenAPI (JSON) | `http://localhost:8080/v3/api-docs`           |
 
 <!-- 📸 CAPTURA: pantalla principal de Swagger UI con la lista de endpoints.
      Guárdala como docs/img/swagger-ui.png
@@ -371,10 +368,12 @@ Proyecto académico desarrollado en **CESDE**. © 2026 — Todos los derechos re
 
 ## 👥 Autores
 
-| Nombre | Rol | GitHub |
-| --- | --- | --- |
-| Andrés Felipe Orozco Loaiza | Desarrollador | [@usuario](https://github.com/usuario) |
-| _Nombre del compañero_ | Desarrollador | [@usuario](https://github.com/usuario) |
+| Nombre                       | Rol                     | GitHub                                                             |
+| ---------------------------- | ----------------------- | ------------------------------------------------------------------ |
+| Andrés Felipe Orozco Loaiza  | Desarrollador BackEnd   | [@budweiker](https://github.com/budweiker)                         |
+| Santiago Rodriguez Fernandez | Desarrollador FullStack | [@santiagorodri7](https://github.com/santiagorodri7)               |
+| Weimar Tuberquia             | Desarrollador FrontEnd  | [@weimartuberquia609-wq](https://github.com/weimartuberquia609-wq) |
+| Alex Ramirez Herrera         | Desarrollador FrontEnd  | [@Alex-2204](https://github.com/Alex-2204)                         |
 
 ---
 

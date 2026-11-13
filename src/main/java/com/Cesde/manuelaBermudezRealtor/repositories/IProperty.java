@@ -12,5 +12,4 @@ public interface IProperty extends JpaRepository<MProperty, Integer> {
     List<MProperty> findByEstrato(int estrato);
     List<MProperty> findByMunicipioIgnoreCase(String municipio);
     List<MProperty> findByPropiedadValorBetween(float min, float max);
-
 }

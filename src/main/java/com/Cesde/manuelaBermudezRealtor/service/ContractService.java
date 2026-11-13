@@ -1,5 +1,6 @@
 package com.Cesde.manuelaBermudezRealtor.service;
 
+import com.Cesde.manuelaBermudezRealtor.dto.ContractDTO;
 import com.Cesde.manuelaBermudezRealtor.modelo.MBuyer;
 import com.Cesde.manuelaBermudezRealtor.modelo.MContract;
 import com.Cesde.manuelaBermudezRealtor.modelo.MProperty;
@@ -27,27 +28,47 @@ public class ContractService {
         this.sellerRepository = sellerRepository;
         this.buyerRepository = buyerRepository;
     }
-    public MContract crear(MContract contract) { return repository.save(resolverReferencias(contract)); }
-    public List<MContract> listar() { return repository.findAll(); }
-    public MContract buscar(Integer id) {
-        return repository.findById(id).orElseThrow(() ->
-                new ResponseStatusException(HttpStatus.NOT_FOUND, "Contrato no encontrado"));
-    }
-    public MContract actualizar(Integer id, MContract cambios) {
-        MContract contract = buscar(id);
-        contract.setPropiedad(cambios.getPropiedad());
-        contract.setVendedor(cambios.getVendedor());
-        contract.setComprador(cambios.getComprador());
+    public ContractDTO crear(ContractDTO dto) { return convertir(repository.save(resolverReferencias(convertir(dto)))); }
+    public List<ContractDTO> listar() { return repository.findAll().stream().map(this::convertir).toList(); }
+    public ContractDTO buscar(Integer id) { return convertir(buscarEntidad(id)); }
+    public ContractDTO actualizar(Integer id, ContractDTO cambios) {
+        MContract contract = buscarEntidad(id);
+        contract.setPropiedad(propertyRepository.getReferenceById(cambios.getPropiedadId()));
+        contract.setVendedor(sellerRepository.getReferenceById(cambios.getVendedorId()));
+        contract.setComprador(buyerRepository.getReferenceById(cambios.getCompradorId()));
         contract.setFechaContrato(cambios.getFechaContrato());
         contract.setValorVenta(cambios.getValorVenta());
         contract.setEstado(cambios.getEstado());
-        return repository.save(resolverReferencias(contract));
+        return convertir(repository.save(resolverReferencias(contract)));
     }
-    public void eliminar(Integer id) { repository.delete(buscar(id)); }
+    public void eliminar(Integer id) { repository.delete(buscarEntidad(id)); }
+    private MContract buscarEntidad(Integer id) {
+        return repository.findById(id).orElseThrow(() ->
+                new ResponseStatusException(HttpStatus.NOT_FOUND, "Contrato no encontrado"));
+    }
+    private MContract convertir(ContractDTO dto) {
+        MContract contract = new MContract();
+        contract.setPropiedad(propertyRepository.getReferenceById(dto.getPropiedadId()));
+        contract.setVendedor(sellerRepository.getReferenceById(dto.getVendedorId()));
+        contract.setComprador(buyerRepository.getReferenceById(dto.getCompradorId()));
+        contract.setFechaContrato(dto.getFechaContrato());
+        contract.setValorVenta(dto.getValorVenta());
+        contract.setEstado(dto.getEstado());
+        return contract;
+    }
+    private ContractDTO convertir(MContract contract) {
+        ContractDTO dto = new ContractDTO();
+        dto.setId(contract.getId());
+        dto.setPropiedadId(contract.getPropiedad().getIdPropiedad());
+        dto.setVendedorId(contract.getVendedor().getId());
+        dto.setCompradorId(contract.getComprador().getId());
+        dto.setFechaContrato(contract.getFechaContrato());
+        dto.setValorVenta(contract.getValorVenta());
+        dto.setEstado(contract.getEstado());
+        return dto;
+    }
     private MContract resolverReferencias(MContract contract) {
-        if (contract.getPropiedad() == null || contract.getPropiedad().getIdPropiedad() == null
-                || contract.getVendedor() == null || contract.getVendedor().getId() == null
-                || contract.getComprador() == null || contract.getComprador().getId() == null) {
+        if (contract.getPropiedad() == null || contract.getVendedor() == null || contract.getComprador() == null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Debe indicar los IDs de propiedad, vendedor y comprador");
         }
         MProperty property = propertyRepository.findById(contract.getPropiedad().getIdPropiedad())

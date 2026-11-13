@@ -1,6 +1,6 @@
 package com.Cesde.manuelaBermudezRealtor.controller;
 
-import com.Cesde.manuelaBermudezRealtor.modelo.MPropertySeller;
+import com.Cesde.manuelaBermudezRealtor.dto.PropertySellerDTO;
 import com.Cesde.manuelaBermudezRealtor.service.PropertySellerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,15 +16,15 @@ public class PropertySellerController {
 
     public PropertySellerController(PropertySellerService service) { this.service = service; }
     @PostMapping
-    public ResponseEntity<MPropertySeller> crear(@RequestBody MPropertySeller relation) {
+    public ResponseEntity<PropertySellerDTO> crear(@RequestBody PropertySellerDTO relation) {
         return ResponseEntity.status(HttpStatus.CREATED).body(service.crear(relation));
     }
     @GetMapping
-    public List<MPropertySeller> listar() { return service.listar(); }
+    public List<PropertySellerDTO> listar() { return service.listar(); }
     @GetMapping("/{id}")
-    public MPropertySeller buscar(@PathVariable Integer id) { return service.buscar(id); }
+    public PropertySellerDTO buscar(@PathVariable Integer id) { return service.buscar(id); }
     @PutMapping("/{id}")
-    public MPropertySeller actualizar(@PathVariable Integer id, @RequestBody MPropertySeller relation) {
+    public PropertySellerDTO actualizar(@PathVariable Integer id, @RequestBody PropertySellerDTO relation) {
         return service.actualizar(id, relation);
     }
     @DeleteMapping("/{id}")
